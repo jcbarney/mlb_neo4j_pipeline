@@ -12,7 +12,7 @@ leagues = pd.DataFrame([{'id': 'NA', 'name':'National Association'},
 leagues.to_csv('data/leagues.csv', index=False)
 
 #create teams db
-team = pd.read_csv('data\TEAMABR.TXT', header=None)
+team = pd.read_csv('data/TEAMABR.TXT', header=None)
 team.columns = ['id', 'league', 'city', 'name', 'start_year', 'end_year']
 #clean duplicate teams
 team_counts = team.groupby(['id'])['name'].count().reset_index(drop=False)
@@ -24,7 +24,7 @@ team.loc[team['league'].isnull() ,'league'] = 'NA'
 team.to_csv('data/teams.csv', index=False)
 
 #create players db
-players = pd.read_csv('data\BIOFILE.TXT')
+players = pd.read_csv('data/BIOFILE.TXT')
 players = players.rename(columns={'PLAYERID': 'id', 'PLAY DEBUT': 'career_start', 'PLAY LASTGAME': 'career_end', 'HEIGHT': 'height', 'WEIGHT': 'weight', 'HOF': 'hof'})
 players['name'] = players['FIRST'] + ' ' + players['LAST']
 players['hall_of_fame'] = players['hof'].fillna('N')
