@@ -84,7 +84,7 @@ for decade in range(1910, 2021, 10):
                 at_bat.append(current.copy())
 at_bat_df = pd.DataFrame(at_bat, index=None).reset_index(drop=True)
 at_bat_df['id'] = at_bat_df.index
-at_bat_df.to_csv('data/at_bat.csv', index=False)
+at_bat_df.to_csv('import/at_bat.csv', index=False)
 
 # build relationship files
 players_teams = pd.concat([at_bat_df[['batter', 'batting_team']].rename(columns={'batter':'player_id', 'batting_team': 'team_id'}),at_bat_df[['pitcher', 'pitching_team']].rename(columns={'pitcher':'player_id', 'pitching_team': 'team_id'})])
