@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.2'
 services:
   neo4j:
     image: neo4j:5.6.0-community
@@ -8,9 +8,7 @@ services:
       - 7687:7687
     volumes:
       - ./conf:/conf
-      - ./data:/data
       - ./import:/import
-      - ./logs:/logs
       - ./plugins:/plugins
     environment: 
       # Raise memory limits
