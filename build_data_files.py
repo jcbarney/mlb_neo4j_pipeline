@@ -9,7 +9,7 @@ leagues = pd.DataFrame([{'id': 'NA', 'name':'National Association'},
     {'id': 'PL', 'name':'Players League'},
     {'id': 'AL', 'name':'American League'},
     {'id': 'FL', 'name':'Federal League'}])
-leagues.to_csv('data/leagues.csv', index=False)
+leagues.to_csv('import/leagues.csv', index=False)
 
 #create teams db
 team = pd.read_csv('data/TEAMABR.TXT', header=None)
@@ -21,7 +21,7 @@ for i in duplicate_teams['id']:
     team.loc[team['id']==i, 'start_year']=team['start_year'][team['id']==i].min()
 team=team.drop_duplicates(subset='id', keep='last')
 team.loc[team['league'].isnull() ,'league'] = 'NA'
-team.to_csv('data/teams.csv', index=False)
+team.to_csv('import/teams.csv', index=False)
 
 #create players db
 players = pd.read_csv('data/BIOFILE.TXT')
@@ -33,7 +33,7 @@ player_nodes = players[['id', 'name', 'career_start', 'career_end', 'height', 'w
 player_nodes=player_nodes.drop_duplicates(subset=['id'])
 player_nodes[['height', 'weight']]=player_nodes[['height', 'weight']].fillna(0)
 player_nodes[['name', 'career_start', 'career_end']]=player_nodes[['name', 'career_start', 'career_end']].fillna('')
-player_nodes.to_csv('data/players.csv', index=False)
+player_nodes.to_csv('import/players.csv', index=False)
 
 #create at bat db
 at_bat=[]
@@ -93,8 +93,8 @@ pitcher = at_bat_df[['id', 'pitcher']]
 batter = at_bat_df[['id', 'batter']]
 team_league = team[['id', 'league']]
 met = at_bat_df[['batter', 'pitcher']]
-players_teams.to_csv('data/player_team_relationships.csv', index=False)
-pitcher.to_csv('data/pitcher_player_relationships.csv', index=False)
-batter.to_csv('data/batter_player_relationships.csv', index=False)
-team_league.to_csv('data/team_league_relationships.csv', index=False)
-met.to_csv('data/batter_pitcher_relationships.csv', index=False)
+players_teams.to_csv('import/player_team_relationships.csv', index=False)
+pitcher.to_csv('import/pitcher_player_relationships.csv', index=False)
+batter.to_csv('import/batter_player_relationships.csv', index=False)
+team_league.to_csv('import/team_league_relationships.csv', index=False)
+met.to_csv('import/batter_pitcher_relationships.csv', index=False)
