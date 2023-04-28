@@ -5,7 +5,7 @@ import os
 # create data directory if not exists
 folder = 'data'
 exists = os.path.exists(folder)
-if exists:
+if not exists:
     os.makedirs(folder)
 # pull team data
 req.urlretrieve('https://www.retrosheet.org/TEAMABR.TXT', 'data/TEAMABR.TXT')
