@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.6'
 services:
   neo4j:
     image: neo4j:5.6.0-community
@@ -10,7 +10,7 @@ services:
       - ./conf:/conf
       - ./import:/import
       - ./plugins:/plugins
-      - ./logs:/var/lib/neo4j/logs
+      - ./logs:/logs
       - ./data:/data
     environment: 
       # Raise memory limits
@@ -20,3 +20,4 @@ services:
       - NEO4J_dbms_memory_heap_max__size=1G
       - NEO4J_dbms.security.allow_csv_import_from_file_urls=true
       - NEO4J_dbms.memory.transaction.total.max=1G
+    user: $CURRENT_UID

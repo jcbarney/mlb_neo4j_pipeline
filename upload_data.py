@@ -27,14 +27,6 @@ rel_files = {'player_team_relationships.csv': {'name': 'PLAYED_FOR', 'node_a': '
 indices=[('AtBat', 'id'), ('Player', 'id')]
 
 driver = GraphDatabase.driver("bolt://localhost:7687", auth=(user, password))
-with driver.session() as session:
-    for ix in indices:
-        insert = f"""CREATE INDEX FOR (n:{ix[0]}) ON (n.{ix[1]})"""
-        session.run(insert)
-driver.close()
-
-
-driver = GraphDatabase.driver("bolt://localhost:7687", auth=(user, password))
 batch_size=10000
 with driver.session() as session:
     # add nodes
