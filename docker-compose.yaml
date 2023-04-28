@@ -10,6 +10,8 @@ services:
       - ./conf:/conf
       - ./import:/import
       - ./plugins:/plugins
+      - ./logs:/var/lib/neo4j/logs
+      - ./data:/data
     environment: 
       # Raise memory limits
       - NEO4J_AUTH=neo4j/password
