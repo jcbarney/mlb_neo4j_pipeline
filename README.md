@@ -14,11 +14,11 @@ Steps to set up a Neo4j database instance and create a visualization:
 - Clone the git repository
 - Run “CURRENT_UID=root docker-compose up” to create a new Neo4j instance
 - In another CLI run the following as superuser:
--- pip install -r requirements.txt
--- download_mlb_data.py
--- build_data_files.py
--- sudo python3 upload_data.py
--- describe_and_visualize.py: this will print some Major League Baseball statistics and create a visualizations showing a version of the shortest path of players who have met on the plate from Mike Trout, a player today, to Babe Ruth. This can be found in your current directory in a file called shortest_path.html and can be viewed in an internet browser
+-  pip install -r requirements.txt
+-  download_mlb_data.py
+-  build_data_files.py
+-  sudo python3 upload_data.py
+-  describe_and_visualize.py: this will print some Major League Baseball statistics and create a visualizations showing a version of the shortest path of players who have met on the plate from Mike Trout, a player today, to Babe Ruth. This can be found in your current directory in a file called shortest_path.html and can be viewed in an internet browser
 - Run “docker-compose down”
 
 MLB data: The information used here was obtained free of
